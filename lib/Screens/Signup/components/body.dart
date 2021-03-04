@@ -12,73 +12,72 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Center(
+    return SingleChildScrollView(
       child: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "SIGN UP",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
-                  fontSize: size.height * 0.06,
+        margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "SIGN UP",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kPrimaryColor,
+                fontSize: size.height * 0.06,
+              ),
+            ),
+            SizedBox(height: size.height * 0.06),
+            RoundedInputField(
+              hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+            RoundedPasswordField(
+              onChanged: (value) {},
+            ),
+            SizedBox(
+              height: size.height * 0.035,
+            ),
+            RoundedButton(
+              text: "SIGN UP AS CUSTOMER",
+              press: () {},
+            ),
+            RoundedButton(
+              text: "SIGN UP AS SHOP OWNER",
+              press: () {},
+            ),
+            SizedBox(height: size.height * 0.03),
+            AlreadyHaveAnAccountCheck(
+              login: false,
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            OrDivider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SocalIcon(
+                  iconSrc: "assets/icons/facebook.svg",
+                  press: () {},
                 ),
-              ),
-              SizedBox(height: size.height * 0.06),
-              RoundedInputField(
-                hintText: "Your Email",
-                onChanged: (value) {},
-              ),
-              RoundedPasswordField(
-                onChanged: (value) {},
-              ),
-              SizedBox(
-                height: 7,
-              ),
-              RoundedButton(
-                text: "SIGN UP AS CUSTOMER",
-                press: () {},
-              ),
-              RoundedButton(
-                text: "SIGN UP AS SHOP OWNER",
-                press: () {},
-              ),
-              SizedBox(height: size.height * 0.04),
-              AlreadyHaveAnAccountCheck(
-                login: false,
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
-              OrDivider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SocalIcon(
-                    iconSrc: "assets/icons/facebook.svg",
-                    press: () {},
-                  ),
-                  SocalIcon(
-                    iconSrc: "assets/icons/twitter.svg",
-                    press: () {},
-                  ),
-                  SocalIcon(
-                    iconSrc: "assets/icons/google-plus.svg",
-                    press: () {},
-                  ),
-                ],
-              )
-            ],
-          ),
+                SocalIcon(
+                  iconSrc: "assets/icons/twitter.svg",
+                  press: () {},
+                ),
+                SocalIcon(
+                  iconSrc: "assets/icons/google-plus.svg",
+                  press: () {},
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
