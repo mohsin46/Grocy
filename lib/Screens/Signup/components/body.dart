@@ -25,86 +25,89 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "SIGN UP",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: kPrimaryColor,
-                fontSize: size.height * 0.06,
-              ),
-            ),
-            SizedBox(height: size.height * 0.06),
-            RoundedInputField(
-              hintText: "Your Email",
-              icon: Icons.email,
-              onChanged: (value) {
-                email=value;
-                print(email);
-              },
-            ),
-            RoundedPasswordField(
-              onChanged: (value) {
-                password=value;
-                print(password);
-              },
-            ),
-            SizedBox(
-              height: size.height * 0.035,
-            ),
-            RoundedButton(
-              text: "SIGN UP AS CUSTOMER",
-              press: () {
-                userInfo = convertDetailsToJson(email, password);
-                print(userInfo);
-                Navigator.push(context,MaterialPageRoute(builder: (context) {
-                  return ConsumerSignup(
-                    userInfo : userInfo,
-                  );
-                }));
-              },
-            ),
-            RoundedButton(
-              text: "SIGN UP AS SHOP OWNER",
-              press: () {},
-            ),
-            SizedBox(height: size.height * 0.03),
-            AlreadyHaveAnAccountCheck(
-              login: false,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            OrDivider(),
-            Row(
+      child: Center(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
+          child: Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SocalIcon(
-                  iconSrc: "assets/icons/facebook.svg",
+                SizedBox(
+                  height: size.height * 0.05,
+                ),
+                Text(
+                  "Signup",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
+                    fontSize: size.height * 0.09,
+                  ),
+                ),
+                SizedBox(height: size.height * 0.05),
+                RoundedInputField(
+                  hintText: "Your Email",
+                  icon: Icons.email,
+                  onChanged: (value) {
+                    email=value;
+                    print(email);
+                  },
+                ),
+                RoundedPasswordField(
+                  onChanged: (value) {
+                    password=value;
+                    print(password);
+                  },
+                ),
+                SizedBox(
+                  height: size.height * 0.035,
+                ),
+                RoundedButton(
+                  text: "SIGN UP AS CUSTOMER",
+                  press: () {
+                    userInfo = convertDetailsToJson(email, password);
+                    print(userInfo);
+                    Navigator.push(context,MaterialPageRoute(builder: (context) {
+                      return ConsumerSignup(
+                        userInfo : userInfo,
+                      );
+                    }));
+                  },
+                ),
+                RoundedButton(
+                  text: "SIGN UP AS SHOP OWNER",
                   press: () {},
                 ),
-                SocalIcon(
-                  iconSrc: "assets/icons/twitter.svg",
-                  press: () {},
+                SizedBox(height: size.height * 0.03),
+                AlreadyHaveAnAccountCheck(
+                  login: false,
+                  press: () {
+                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context){
+                      return LoginScreen();
+                    }), (route) => false);
+                  },
                 ),
-                SocalIcon(
-                  iconSrc: "assets/icons/google-plus.svg",
-                  press: () {},
-                ),
+                //OrDivider(),
+                /*
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SocalIcon(
+                      iconSrc: "assets/icons/facebook.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/twitter.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/google-plus.svg",
+                      press: () {},
+                    ),
+                  ],
+                )*/
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
