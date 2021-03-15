@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:grocy/Screens/ConsumerSignupDetails/ConsumerSignup.dart';
 import 'package:grocy/Screens/Login/login_screen.dart';
 import 'package:grocy/Screens/Signup/components/or_divider.dart';
 import 'package:grocy/Screens/Signup/components/social_icon.dart';
+import 'package:grocy/Screens/signupFunctions.dart';
 import 'package:grocy/components/already_have_an_account_acheck.dart';
 import 'package:grocy/components/rounded_button.dart';
 import 'package:grocy/components/rounded_input_field.dart';
 import 'package:grocy/components/rounded_password_field.dart';
 import 'package:grocy/constants.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  var email;
+  var password;
+  String userInfo;
+  @override
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,17 +41,32 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.06),
             RoundedInputField(
               hintText: "Your Email",
-              onChanged: (value) {},
+              icon: Icons.email,
+              onChanged: (value) {
+                email=value;
+                print(email);
+              },
             ),
             RoundedPasswordField(
-              onChanged: (value) {},
+              onChanged: (value) {
+                password=value;
+                print(password);
+              },
             ),
             SizedBox(
               height: size.height * 0.035,
             ),
             RoundedButton(
               text: "SIGN UP AS CUSTOMER",
-              press: () {},
+              press: () {
+                userInfo = convertDetailsToJson(email, password);
+                print(userInfo);
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return ConsumerSignup(
+                    userInfo : userInfo,
+                  );
+                }));
+              },
             ),
             RoundedButton(
               text: "SIGN UP AS SHOP OWNER",
