@@ -25,8 +25,16 @@ class _BodyState extends State<Body> {
     print("Called");
     final storage = new FlutterSecureStorage();
     String user_token = await storage.read(key: 'user_token');
+    String shop_token = await storage.read(key: 'shop_token');
+    print("Shop Token");
+    print(shop_token);
     print(user_token);
     if(user_token!=null){
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return ConsumerLocationScreen();
+      }));
+    }
+    if(shop_token!=null){
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return ConsumerLocationScreen();
       }));

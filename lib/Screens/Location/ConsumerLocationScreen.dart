@@ -18,6 +18,7 @@ class _ConsumerLocationScreenState extends State<ConsumerLocationScreen> {
               onPressed: () async{
                 final storage = new FlutterSecureStorage();
                 await storage.delete(key: 'user_token');
+                await storage.delete(key: 'shop_token');
                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => WelcomeScreen()),(route) => false);
               },
               child: Text(

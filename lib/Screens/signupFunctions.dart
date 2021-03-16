@@ -2,6 +2,15 @@ import 'dart:convert';
 
 String convertDetailsToJson(var email,var password) {
   var res={};
+  res["consumer_email"]=email;
+  res["consumer_password"]=password;
+  String js = json.encode(res);
+  print(js);
+  return js;
+}
+
+String convertShopDetailsToJson(var email,var password) {
+  var res={};
   res["email"]=email;
   res["password"]=password;
   String js = json.encode(res);

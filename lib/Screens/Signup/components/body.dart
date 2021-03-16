@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocy/Screens/ConsumerSignupDetails/ConsumerSignup.dart';
 import 'package:grocy/Screens/Login/login_screen.dart';
+import 'package:grocy/Screens/ShopSignup/ShopSignupScreen.dart';
 import 'package:grocy/Screens/Signup/components/or_divider.dart';
 import 'package:grocy/Screens/Signup/components/social_icon.dart';
 import 'package:grocy/Screens/signupFunctions.dart';
@@ -75,7 +76,14 @@ class _BodyState extends State<Body> {
                 ),
                 RoundedButton(
                   text: "SIGN UP AS SHOP OWNER",
-                  press: () {},
+                  press: () {
+                    Navigator.push(context,MaterialPageRoute(builder: (context) {
+                      return ShopSignupScreen(
+                        email:email,
+                        password:password,
+                      );
+                    }));
+                  },
                 ),
                 SizedBox(height: size.height * 0.03),
                 AlreadyHaveAnAccountCheck(
