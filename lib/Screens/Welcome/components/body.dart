@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:grocy/Screens/Location/ConsumerLocationScreen.dart';
 import 'package:grocy/Screens/Login/login_screen.dart';
+import 'package:grocy/Screens/ShopScreens/AddProduct.dart';
+import 'package:grocy/Screens/ShopScreens/BottomTabs.dart';
 import 'package:grocy/Screens/Signup/signup_screen.dart';
 import 'package:grocy/components/rounded_button.dart';
 import 'package:grocy/constants.dart';
@@ -35,9 +37,7 @@ class _BodyState extends State<Body> {
       }));
     }
     if(shop_token!=null){
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return ConsumerLocationScreen();
-      }));
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => BottomTabs()),(route) => false);
     }
   }
   Widget build(BuildContext context) {

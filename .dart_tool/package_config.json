@@ -62,6 +62,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_redux",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_redux-0.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_secure_storage",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-4.1.0",
       "packageUri": "lib/",
@@ -134,6 +140,18 @@
       "languageVersion": "2.7"
     },
     {
+      "name": "redux",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/redux-5.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "redux_thunk",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/redux_thunk-0.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/src/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -200,7 +218,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-14T05:34:05.711477Z",
+  "generated": "2021-03-18T18:44:25.685141Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-30.0.dev"
 }

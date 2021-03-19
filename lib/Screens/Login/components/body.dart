@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:grocy/Screens/Location/ConsumerLocationScreen.dart';
+import 'package:grocy/Screens/ShopScreens/AddProduct.dart';
+import 'package:grocy/Screens/ShopScreens/BottomTabs.dart';
 import 'package:grocy/Screens/Signup/signup_screen.dart';
 import 'package:grocy/Screens/signupFunctions.dart';
 import 'package:grocy/components/already_have_an_account_acheck.dart';
@@ -24,7 +26,6 @@ class _BodyState extends State<Body> {
   var consumer;
   var shopOwner;
   var error;
-
   void storeToken(var token) async{
     await storage.delete(key: 'shop_token');
     await storage.write(key: 'user_token', value: token);
@@ -36,7 +37,7 @@ class _BodyState extends State<Body> {
     await storage.delete(key: 'user_token');
     await storage.write(key: 'shop_token', value: token);
     print(token);
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ConsumerLocationScreen()), (route) => false);
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => BottomTabs()), (route) => false);
   }
 
   @override
