@@ -14,11 +14,11 @@ class _BottomTabsState extends State<BottomTabs> {
   static List<Widget> _widgetOptions = <Widget>[
     AddProduct(),
     Text(
-      'Index 1: Business',
+      'Orders Placed',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Orders out for delivery',
       style: optionStyle,
     ),
     ShopOwnerProfile(),
@@ -44,13 +44,13 @@ class _BottomTabsState extends State<BottomTabs> {
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.store),
+            label: 'Orders',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.delivery_dining),
+            label: 'Delivery',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
