@@ -1,10 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.techstart.grocy">
     <uses-permission android:name="android.permission.INTERNET"/>
-   <application
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <application
         android:label="grocy"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyB1hSZ48f5wir9fhHtrNWV6yhVW0H0ZDck"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

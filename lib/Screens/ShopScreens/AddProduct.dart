@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -36,8 +37,8 @@ class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: StoreConnector<AppState,_ViewModel>(
+    return CupertinoPageScaffold(
+      child: StoreConnector<AppState,_ViewModel>(
         //onInit: (store) => store.dispatch(new AddProduct(allProducts)),
         converter: (Store<AppState> store) => _ViewModel.create(store),
         builder: (BuildContext context,_ViewModel viewModel) => Container(
@@ -96,7 +97,10 @@ class _AddProductState extends State<AddProduct> {
                       ),
                     ),
                     onPressed: () {
-
+                      //Navigator.push(context, ProductTile())
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) {
+                        return ProductTile();
+                      }));
                     },
                   ),
                 ),

@@ -7,6 +7,9 @@ import 'package:grocy/redux/model.dart';
 import 'package:grocy/redux/reducers.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_map_location_picker/generated/l10n.dart'
+as location_picker;
 
 void main() {
   //final Store<AppState> _store = Store(appReducer, initialState: AppState(new shopDetails()),);
@@ -47,6 +50,12 @@ class MyApp extends StatelessWidget {
     );
     return StoreProvider(store: store,
         child:MaterialApp(
+          localizationsDelegates: const[
+            location_picker.S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           debugShowCheckedModeBanner: false,
           title: 'Flutter Auth',
           theme: ThemeData(
