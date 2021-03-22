@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
-Uri url = Uri.parse('https://f409a9ec98fa.ngrok.io');
+Uri url = Uri.parse('https://eb2e0b2d3a34.ngrok.io');
 var url2 = 'https://localhost:3000';
 
 final storage = new FlutterSecureStorage();
