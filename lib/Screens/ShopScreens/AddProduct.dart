@@ -29,8 +29,12 @@ class _AddProductState extends State<AddProduct> {
   }
 
   void getProducts() async {
-    allProducts = await shop.getProducts();
     setState(() {
+      loading=true;
+    });
+    var allProduct = await shop.getProducts();
+    setState(() {
+      allProducts=allProduct;
       loading=false;
     });
   }
@@ -123,6 +127,7 @@ class _AddProductState extends State<AddProduct> {
                         print(name);
                         final qty = item['product_quantity'];
                         final price = item['product_price'].toString();
+                        final image = item['product_image'].toString();
                         return Card(
                           margin: EdgeInsets.fromLTRB(7, 12.5, 7, 0),
                           shape: RoundedRectangleBorder(
@@ -130,10 +135,7 @@ class _AddProductState extends State<AddProduct> {
                           ),
                           elevation: 5,
                           child: ListTile(
-                              leading: Image(
-                                image: AssetImage('assets/images/bag.jpg'),
-                                fit: BoxFit.cover,
-                              ),
+                              leading: Image.network(image,fit: BoxFit.contain,),
                               title: Text(
                                   name
                               ),

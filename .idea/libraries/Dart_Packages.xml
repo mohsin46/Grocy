@@ -72,6 +72,41 @@
             </list>
           </value>
         </entry>
+        <entry key="firebase_core">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_core_platform_interface">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-2.1.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_core_web">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.1+1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_storage">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-5.0.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_storage_platform_interface">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_platform_interface-1.0.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter">
           <value>
             <list>
@@ -303,6 +338,13 @@
             </list>
           </value>
         </entry>
+        <entry key="quiver">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-2.1.5/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="redux">
           <value>
             <list>
@@ -407,6 +449,11 @@
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.3/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-2.1.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.1+1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-5.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_platform_interface-1.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_redux-0.8.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-4.1.0/lib" />
@@ -436,6 +483,7 @@
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.3/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-2.1.5/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/redux-5.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/redux_thunk-0.4.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../../src/flutter2/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.0/lib" />

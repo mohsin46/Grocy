@@ -1,10 +1,14 @@
 import 'dart:io';
-
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocy/Screens/ShopScreens/AddProduct.dart';
+import 'package:grocy/Screens/signupFunctions.dart';
 import 'package:grocy/components/rounded_button.dart';
+import 'package:grocy/consumer_api.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
 
 class ProductTile extends StatefulWidget {
   ProductTile({this.product});
@@ -14,7 +18,16 @@ class ProductTile extends StatefulWidget {
 }
 
 class _ProductTileState extends State<ProductTile> {
+  ShopApi shop = new ShopApi();
   File _image;
+  static const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  Random _rnd = Random();
+  var imageUrl;
+  var product;
+  var type="packaged";
+  String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
   Future getImageFromGallery() async{
     final image = await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
@@ -84,7 +97,7 @@ class _ProductTileState extends State<ProductTile> {
                         child:TextField(
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
-                            name=value;
+                            price=value;
                           },
                           decoration: InputDecoration(
                             hintText: 'Cost',
@@ -135,7 +148,7 @@ class _ProductTileState extends State<ProductTile> {
                       Container(
                         //height: size.height/2.5,
                           child: TextButton(
-                            child: _image == null ? Image.asset('assets/images/bag.jpg',height: size.height/2.5,) : Image.file(_image,height: size.height/2.5,),
+                            child: _image == null ? Image.asset('assets/images/bag.jpg',height: size.height/2.5,) : Image.file(_image,height: size.height/2.5,width: size.width/2.5,fit: BoxFit.contain,),
                             onPressed: () {
                               showModalBottomSheet(context: context,
                                   builder: (
@@ -210,6 +223,50 @@ class _ProductTileState extends State<ProductTile> {
                               );
                             },
                           )
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: size.width-0.1*size.width,
+                        height: size.height/18.5,
+                        margin: EdgeInsets.fromLTRB(0, 25, 0, 0),
+                        child: TextButton(onPressed: () async{
+                          var iname = getRandomString(8);
+                          final _storage = firebase_storage.FirebaseStorage.instance;
+                          var snapshot = await _storage.ref().child('$iname').putFile(_image);
+                          var downloadUrl = await snapshot.ref.getDownloadURL();
+                          print(downloadUrl);
+                          setState(() {
+                            imageUrl=downloadUrl;
+                          });
+                          product=convertProductDetailsToJson(name, price, qty, imageUrl, type);
+                          print(product);
+                          var res = await shop.addProduct(product);
+                          print(res);
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => AddProduct()), (route) => false);
+                        },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(9.0),
+                                    side: BorderSide(color:Colors.green)
+                                ),
+                              ),
+                            ),
+                            child: Text(
+                              'Add Product',
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.white
+                              ),
+                            )
+                        ),
                       )
                     ],
                   ),

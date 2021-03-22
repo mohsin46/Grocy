@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
-Uri url = Uri.parse('https://eb2e0b2d3a34.ngrok.io');
+Uri url = Uri.parse('https://8c4bfea094e1.ngrok.io');
 var url2 = 'https://localhost:3000';
 
 final storage = new FlutterSecureStorage();
@@ -35,7 +35,7 @@ class ShopApi {
   Future getProducts() async{
     var token = await storage.read(key: 'shop_token');
     print(token);
-    http.Response response = await http.get(Uri.parse('$url/consumer/6/products'),
+    http.Response response = await http.get(Uri.parse('$url/consumer/2/products'),
       headers: {"Authorization": 'Bearer $token'},
     );
     //print(response.body);
@@ -49,6 +49,19 @@ class ShopApi {
     http.Response response = await http.post(Uri.parse('$url/shop/login'),
         headers: {"Content-Type": "application/json"},
         body:shop);
+    String data = response.body;
+    print(data);
+    var decodedData = jsonDecode(data);
+    print(decodedData);
+    return decodedData;
+  }
+
+  Future addProduct(String product) async {
+    var token = await storage.read(key: 'shop_token');
+    print(token);
+    http.Response response = await http.post(Uri.parse('$url/shop/product'),
+        headers: {"Content-Type": "application/json","Authorization": 'Bearer $token'},
+        body:product);
     String data = response.body;
     print(data);
     var decodedData = jsonDecode(data);

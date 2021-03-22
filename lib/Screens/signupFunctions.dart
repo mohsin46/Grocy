@@ -29,3 +29,15 @@ String convertToJson(var email,var password,var contact,var address,var name) {
   print(js);
   return js;
 }
+
+String convertProductDetailsToJson(var name, var price,var qty,var imageUrl,var type) {
+  var res = {};
+  res["product_name"]=name;
+  res["product_price"]=price;
+  res["product_quantity"]=qty;
+  res["product_type"]=type;
+  res["product_image"]=imageUrl;
+  String js = json.encode(res);
+  print(js);
+  return js;
+}

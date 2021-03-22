@@ -10,8 +10,12 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_map_location_picker/generated/l10n.dart'
 as location_picker;
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await firebase_core.Firebase.initializeApp();
   //final Store<AppState> _store = Store(appReducer, initialState: AppState(new shopDetails()),);
   runApp(MyApp());
 }
