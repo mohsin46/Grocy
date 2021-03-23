@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocy/Screens/ShopSignup/ShopLocation.dart';
 import 'package:grocy/components/RoundedInputNumberField.dart';
 import 'package:grocy/components/rounded_button.dart';
 import 'package:grocy/components/rounded_input_field.dart';
@@ -19,7 +20,7 @@ class _ShopSignupScreenState extends State<ShopSignupScreen> {
   var landmark;
   var town;
   var upiId;
-
+  var address;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,7 +99,18 @@ class _ShopSignupScreenState extends State<ShopSignupScreen> {
                     RoundedButton(
                       text: 'SIGNUP',
                       press: () async {
-                        print("hi");
+                        address = area + ', ' + landmark + ', ' + town;
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ShopLocationScreen(
+                            email: widget.email,
+                            password: widget.password,
+                            shopName: shopName,
+                            shopContact: shopContact,
+                            address: address,
+                            ownerName: ownerName,
+                            upiId: upiId,
+                          );
+                        }));
                       },
                     )
                   ],

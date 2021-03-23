@@ -17,7 +17,7 @@ class AddProduct extends StatefulWidget {
 
 class _AddProductState extends State<AddProduct> {
   ShopApi shop = ShopApi();
-  var allProducts;
+  var allProducts = [];
   bool loading = true;
   @override
   void initState() {
@@ -33,16 +33,24 @@ class _AddProductState extends State<AddProduct> {
       loading=true;
     });
     var allProduct = await shop.getProducts();
-    setState(() {
-      allProducts=allProduct;
-      loading=false;
-    });
+    print(allProduct.length);
+    if(allProduct.length>0){
+      setState(() {
+        allProducts=allProduct;
+        loading=false;
+      });
+    } else {
+      setState(() {
+        //allProducts=allProduct;
+        loading=false;
+      });
+    }
   }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return CupertinoPageScaffold(
-      child: StoreConnector<AppState,_ViewModel>(
+    return Scaffold(
+      body: StoreConnector<AppState,_ViewModel>(
         //onInit: (store) => store.dispatch(new AddProduct(allProducts)),
         converter: (Store<AppState> store) => _ViewModel.create(store),
         builder: (BuildContext context,_ViewModel viewModel) => Container(
@@ -114,7 +122,7 @@ class _AddProductState extends State<AddProduct> {
                         valueColor: new AlwaysStoppedAnimation<Color>(Colors.green),
                       )
                     )
-                        :
+                        : allProducts.length!=0 ?
                     ListView.builder(
                       //physics: NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
@@ -148,7 +156,18 @@ class _AddProductState extends State<AddProduct> {
                           ),
                         );
                       },
-                    )
+                    ) :
+                        Container(
+                          child: Center(
+                            child :Text(
+                              'Add Products',
+                              style: TextStyle(
+                                fontSize: 41,
+                                color: Colors.green
+                              ),
+                            )
+                          ),
+                        )
                 )
               ],
             ),
