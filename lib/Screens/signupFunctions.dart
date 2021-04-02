@@ -1,5 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+
+final storage = new FlutterSecureStorage();
+
 String convertDetailsToJson(var email,var password) {
   var res={};
   res["consumer_email"]=email;
@@ -54,6 +59,22 @@ String convertShopSignupDetailsToJson(var email,var password,var shopName,var ow
   res["shop_latitude"]=latitude;
   res["shop_longitude"]=longitude;
   res["shop_image"]=imageUrl;
+  String js = json.encode(res);
+  print(js);
+  return js;
+}
+
+String updateProductJson(var product_name,var product_price,var product_type,var product_quantity,var increase_quantity,var decrease_quantity,var product_image) {
+  var res = {};
+  //res["shop_id"]=shop_id;
+  //res["product_id"]=product_id;
+  res["product_name"]=product_name;
+  res["product_price"]=product_price;
+  res["product_type"]=product_type;
+  res["product_quantity"]=product_quantity;
+  res["increase_quantity"]=increase_quantity;
+  res["decrease_quantity"]=decrease_quantity;
+  res["product_image"]=product_image;
   String js = json.encode(res);
   print(js);
   return js;

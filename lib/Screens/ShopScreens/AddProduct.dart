@@ -26,7 +26,7 @@ class _AddProductState extends State<AddProduct> {
     super.initState();
     getProducts();
     print("Getting Products");
-    print(allProducts);
+    //print(allProducts);
   }
 
   void getProducts() async {

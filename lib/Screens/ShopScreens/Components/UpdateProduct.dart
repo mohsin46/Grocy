@@ -3,7 +3,11 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:grocy/Screens/ShopScreens/AddProduct.dart';
+import 'package:grocy/Screens/signupFunctions.dart';
+import 'package:grocy/consumer_api.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class UpdateProduct extends StatefulWidget {
   @override
@@ -46,11 +50,21 @@ class _UpdateProductState extends State<UpdateProduct> {
   }
 
   TextEditingController _controller = new TextEditingController();
+  final TextEditingController _nameController = new TextEditingController();
+  final TextEditingController _priceController = new TextEditingController();
+
+
+  void initState() {
+    print('jjjj');
+    _nameController.text=widget.name;
+    _priceController.text=widget.price;
+    return super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var total_quantity = widget.qty + int.parse(increase_quantity) - int.parse(decrease_quantity);
-    var new_url=widget.url;
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -58,6 +72,24 @@ class _UpdateProductState extends State<UpdateProduct> {
             'Update Product'
         ),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 20),
+              child: GestureDetector(
+                onTap: () async{
+                  print('Hi');
+                  ShopApi shop = new ShopApi();
+                  await shop.deleteProduct(widget.id);
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => AddProduct()), (route) => false);
+                },
+                child: Icon(
+                  Icons.delete,
+                  size: 27.0,
+                  color: Colors.black,
+                ),
+              )
+          )
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -68,7 +100,7 @@ class _UpdateProductState extends State<UpdateProduct> {
                 Container(
                   margin: EdgeInsets.fromLTRB(0.05*size.width, 15, 0.05*size.width, 0),
                   child: TextField(
-                    controller: TextEditingController(text: widget.name),
+                    controller: _nameController,
                     onChanged: (value) {
                       new_name=value;
                       print(new_name);
@@ -104,10 +136,14 @@ class _UpdateProductState extends State<UpdateProduct> {
                         width: 0.325*size.width,
                         margin: EdgeInsets.fromLTRB(0.0275*size.width, 0, 0, 0),
                         child:TextField(
-                          controller: TextEditingController(text: widget.price),
+                          controller: _priceController,
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
-                            new_price=value;
+                            setState(() {
+                              new_price=value;
+                            });
+                            //new_price=value;
+                            print(new_price);
                           },
                           decoration: InputDecoration(
                             hintText: 'Cost',
@@ -269,7 +305,7 @@ class _UpdateProductState extends State<UpdateProduct> {
                       Container(
                         //height: size.height/2.5,
                           child: TextButton(
-                            child: _image == null ? Image.network(widget.url,height: size.height/2.5,) : Image.file(_image,height: size.height/2.5,width: size.width/2.5,fit: BoxFit.contain,),
+                            child: _image == null ? Image.network(widget.url,height: size.height/2.5,width: size.height/2.5,) : Image.file(_image,height: size.height/2.5,width: size.height/2.5,fit: BoxFit.contain,),
                             onPressed: () {
                               showModalBottomSheet(context: context,
                                   builder: (
@@ -348,6 +384,67 @@ class _UpdateProductState extends State<UpdateProduct> {
                     ],
                   ),
                 ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: size.width-0.1*size.width,
+                        height: size.height/18.5,
+                        margin: EdgeInsets.fromLTRB(0, 45, 0, 50),
+                        child: TextButton(onPressed: () async{
+                          ShopApi shop = new ShopApi();
+                          var iname = getRandomString(8);
+                          if(_image!=null) {
+                            final _storage = firebase_storage.FirebaseStorage
+                                .instance;
+                            var snapshot = await _storage.ref()
+                                .child('$iname')
+                                .putFile(_image);
+                            var downloadUrl = await snapshot.ref
+                                .getDownloadURL();
+                            print(downloadUrl);
+                            setState(() {
+                              new_url = downloadUrl;
+                            });
+                          }
+                          if(new_name==null){
+                            new_name=widget.name;
+                          };
+                          if(new_price==null){
+                            new_price=widget.price;
+                          }
+                          if(new_url==null){
+                            new_url=widget.url;
+                          }
+                          print('----------------------------------------------------------------------------------------------------------------');
+                          var data = updateProductJson(new_name, new_price, widget.type, widget.qty, increase_quantity, decrease_quantity, new_url);
+                          print(data);
+                          var res = shop.updateProduct(data, widget.id);
+                          print(res);
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => AddProduct()), (route) => false);
+                        },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(9.0),
+                                    side: BorderSide(color:Colors.green)
+                                ),
+                              ),
+                            ),
+                            child: Text(
+                              'Update Product',
+                              style: TextStyle(
+                                  fontSize: 19,
+                                  color: Colors.white
+                              ),
+                            )
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
