@@ -42,7 +42,7 @@ String convertProductDetailsToJson(var name, var price,var qty,var imageUrl,var 
   return js;
 }
 
-String convertShopSignupDetailsToJson(var email,var password,var shopName,var ownerName,var shopContact,var upiId,var latitude,var longitude,var address){
+String convertShopSignupDetailsToJson(var email,var password,var shopName,var ownerName,var shopContact,var upiId,var latitude,var longitude,var address,var imageUrl){
   var res = {};
   res["shop_email"]=email;
   res["shop_password"]=password;
@@ -53,6 +53,7 @@ String convertShopSignupDetailsToJson(var email,var password,var shopName,var ow
   res["shop_location"]=address;
   res["shop_latitude"]=latitude;
   res["shop_longitude"]=longitude;
+  res["shop_image"]=imageUrl;
   String js = json.encode(res);
   print(js);
   return js;

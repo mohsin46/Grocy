@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:grocy/Screens/ShopScreens/Components/ProductTile.dart';
+import 'package:grocy/Screens/ShopScreens/Components/UpdateProduct.dart';
 import 'package:grocy/Screens/Welcome/welcome_screen.dart';
 import 'package:grocy/components/rounded_button.dart';
 import 'package:grocy/redux/actions.dart';
@@ -34,7 +35,7 @@ class _AddProductState extends State<AddProduct> {
     });
     var allProduct = await shop.getProducts();
     print(allProduct.length);
-    if(allProduct.length>0){
+    if(allProduct.length!=0){
       setState(() {
         allProducts=allProduct;
         loading=false;
@@ -136,6 +137,8 @@ class _AddProductState extends State<AddProduct> {
                         final qty = item['product_quantity'];
                         final price = item['product_price'].toString();
                         final image = item['product_image'].toString();
+                        final id = item['product_id'].toString();
+                        final type = "packaged";
                         return Card(
                           margin: EdgeInsets.fromLTRB(7, 12.5, 7, 0),
                           shape: RoundedRectangleBorder(
@@ -152,7 +155,20 @@ class _AddProductState extends State<AddProduct> {
                               ),
                               trailing: Text(
                                   'Rs $price'
-                              )
+                              ),
+                              onTap: () {
+                                print("Update Product Page");
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return UpdateProduct(
+                                    name: name,
+                                    qty: qty,
+                                    price: price,
+                                    type: type,
+                                    url: image,
+                                    id: id,
+                                  );
+                                }));
+                              },
                           ),
                         );
                       },

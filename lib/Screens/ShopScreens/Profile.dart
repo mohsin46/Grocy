@@ -25,7 +25,7 @@ class _ShopOwnerProfileState extends State<ShopOwnerProfile> {
                   final storage = new FlutterSecureStorage();
                   await storage.delete(key: 'user_token');
                   await storage.delete(key: 'shop_token');
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => WelcomeScreen()),(route) => false);
+                  Navigator.of(context,rootNavigator: true).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => WelcomeScreen()),(route) => false);
                 },
                 child: Text(
                     'Logout'
