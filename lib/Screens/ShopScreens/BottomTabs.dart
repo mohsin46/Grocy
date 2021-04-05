@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocy/Screens/ShopScreens/AddProduct.dart';
 import 'package:grocy/Screens/ShopScreens/Components/ProductTile.dart';
+import 'package:grocy/Screens/ShopScreens/DeliveryDetailsScreen.dart';
 import 'package:grocy/Screens/ShopScreens/Profile.dart';
 
 class BottomTabs extends StatefulWidget {
@@ -64,6 +65,12 @@ class _BottomTabsState extends State<BottomTabs> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       child: CupertinoTabScaffold(
@@ -118,7 +125,7 @@ class _BottomTabsState extends State<BottomTabs> {
                     navigatorKey: thirdTabNavKey,
                     builder: (context) {
                       return CupertinoPageScaffold(
-                          child: ShopOwnerProfile()
+                          child: DeliveryTabs()
                       );
                     });
               case 3:

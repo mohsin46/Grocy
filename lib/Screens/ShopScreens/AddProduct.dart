@@ -17,6 +17,7 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+  bool get wantKeepAlive => true;
   ShopApi shop = ShopApi();
   var allProducts = [];
   bool loading = true;
@@ -27,6 +28,12 @@ class _AddProductState extends State<AddProduct> {
     getProducts();
     print("Getting Products");
     //print(allProducts);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   void getProducts() async {
