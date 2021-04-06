@@ -40,8 +40,7 @@
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screens/ShopScreens/AddProduct.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screens/ShopScreens/AddProduct.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screens/ShopScreens/BottomTabs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screens/ShopScreens/BottomTabs.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screens/ShopScreens/OutForDelivery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screens/ShopScreens/OutForDelivery.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/consumer_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/consumer_api.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,22 +133,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="159" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1616392985685" />
-    <state width="1491" height="188" key="GridCell.Tab.0.bottom" timestamp="1617603788207">
+    <state width="1491" height="187" key="GridCell.Tab.0.bottom" timestamp="1617636377088">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1617603788207" />
-    <state width="1491" height="188" key="GridCell.Tab.0.center" timestamp="1617603788207">
+    <state width="1491" height="187" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1617636377088" />
+    <state width="1491" height="187" key="GridCell.Tab.0.center" timestamp="1617636377088">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1617603788207" />
-    <state width="1491" height="188" key="GridCell.Tab.0.left" timestamp="1617603788207">
+    <state width="1491" height="187" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1617636377088" />
+    <state width="1491" height="187" key="GridCell.Tab.0.left" timestamp="1617636377088">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1617603788207" />
-    <state width="1491" height="188" key="GridCell.Tab.0.right" timestamp="1617603788207">
+    <state width="1491" height="187" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1617636377088" />
+    <state width="1491" height="187" key="GridCell.Tab.0.right" timestamp="1617636377088">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1617603788207" />
+    <state width="1491" height="187" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1617636377088" />
     <state x="276" y="155" key="IDE.errors.dialog" timestamp="1614849299081">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
